@@ -1,3 +1,10 @@
+-- change compilation another way
+{{
+  config(
+    materialized = "table",
+    tags = ["core"]
+  )
+}}
 with
 
 supplies as (
