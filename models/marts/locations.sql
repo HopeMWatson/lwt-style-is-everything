@@ -2,7 +2,11 @@ with
 
 locations as (
 
-    select * from {{ ref('stg_locations') }}
+    select 
+    location_id,
+    location_name, 
+    tax_rate
+     from {{ ref('stg_locations') }}
 
 )
 
