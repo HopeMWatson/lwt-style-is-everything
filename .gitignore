@@ -17,3 +17,4 @@ logs/
 
 .ruff_cache
 __pycache__
+dbt_internal_packages/
