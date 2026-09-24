@@ -25,7 +25,9 @@
 ## Running locally
 - Target dbt-core 1.10 compatibility: CI runs dbt-core 1.10.10 with dbt-duckdb, even though local dbt is 2.0.x.
 - Build a selected model with `dbt build --profiles-dir . --select <model>`.
-- Expect dbt and `dbt deps` to need network access to fetch dependencies, including the DuckDB driver. If network is unavailable, say dbt could not run; never claim the change was verified.
+- Expect dbt to need network access (it resolves `packages.yml` against dbt Hub and may fetch the DuckDB driver) and write access to `~/.dbt/leases`.
+- If dbt fails because of the sandbox (permission or network error), request approval to rerun it outside the sandbox. Don't report "could not run" without asking first.
+- If approval is denied or unavailable, say dbt could not run and why; never claim the change was verified.
 - If dbt 2.0 parsing rewrites `.gitignore` or `package-lock.yml`, restore those generated changes before finishing with `git checkout -- .gitignore package-lock.yml`.
 
 ## Finishing
